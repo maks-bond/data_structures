@@ -1,0 +1,5 @@
+# Bazel
+bazel-*/
+bazel-*
+# *.bazel
+*.bazel.lock
