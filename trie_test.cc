@@ -8,6 +8,19 @@ TEST(TrieTest, TrieNodeTest) {
     EXPECT_EQ(node->children['z'-'a'], nullptr);
 }
 
-TEST(TrieTest, BasicTest) {
-    EXPECT_TRUE(true);
+TEST(TrieTest, AddBasicTest) {
+    TrieNode *root = new TrieNode();
+    add(root, "abcd");
+    EXPECT_NE(root->children[0], nullptr);
+    EXPECT_NE(root->children[0]->children[1], nullptr);
+    EXPECT_NE(root->children[0]->children[1]->children[2], nullptr);
+    EXPECT_NE(root->children[0]->children[1]->children[2]->children[3], nullptr);
+}
+
+TEST(TrieTest, RemoveBasicTest) {
+    TrieNode *root = new TrieNode();
+    add(root, "abcd");
+    EXPECT_NE(root->children[0], nullptr);   
+    remove(root, "abcd");
+    EXPECT_EQ(root->children[0], nullptr);
 }
