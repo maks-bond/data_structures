@@ -10,47 +10,21 @@ struct TrieNode {
     int count = 0;
 };
 
-void add(TrieNode *root, const std::string &s) {
-    TrieNode *node = root;
-    for(const char c : s) {
-        node->count++;
-        int idx = c-'a';
-        if(!node->children[idx]) node->children[idx] = new TrieNode();
-        node = node->children[idx];
-    }
-    node->count++;
-}
+class Trie {
+public:
+    Trie();
+    ~Trie();
 
-void remove(TrieNode *root, const std::string &s) {
-    TrieNode *node = root;
-    for(const char c : s) {
-        int idx = c-'a';
-        if(!node->children[idx]) {
-            return;
-        }
-        
-        auto *child_node = node->children[idx];
-        if(!child_node) return;
+    void add(const std::string &s);
+    void remove(const std::string &s);
+    bool find(const std::string &s) const;
 
-        child_node->count--;
-        if(child_node->count <= 0) {
-            // Ideally we should also iterate over children of child node and delete all of them to clear the memory.
-            delete child_node;
-            node->children[idx] = nullptr;
-            return;
-        }
+private:
+    TrieNode *root;
+};
 
-        node = node->children[idx];
-    }
-}
+void add(TrieNode *root, const std::string &s);
 
-bool find(TrieNode *root, const std::string &s) {
-    TrieNode *node = root;
-    for(const char c : s) {
-        int idx = c-'a';
-        if(!node->children[idx]) return false;
-        node = node->children[idx];
-    }
+void remove(TrieNode *root, const std::string &s);
 
-    return true;
-}
+bool find(TrieNode *root, const std::string &s);
