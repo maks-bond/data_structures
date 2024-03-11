@@ -24,3 +24,14 @@ TEST(TrieTest, RemoveBasicTest) {
     remove(root, "abcd");
     EXPECT_EQ(root->children[0], nullptr);
 }
+
+TEST(TrieTest, FindBasicTest) {
+    TrieNode *root = new TrieNode();
+    add(root, "abcd");
+    
+    EXPECT_TRUE(find(root, "abcd"));
+    EXPECT_TRUE(find(root, "abc"));
+    EXPECT_TRUE(find(root, "ab"));
+    EXPECT_TRUE(find(root, "a"));
+    EXPECT_FALSE(find(root, "bcd"));
+}

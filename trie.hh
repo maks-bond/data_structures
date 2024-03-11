@@ -43,3 +43,14 @@ void remove(TrieNode *root, const std::string &s) {
         node = node->children[idx];
     }
 }
+
+bool find(TrieNode *root, const std::string &s) {
+    TrieNode *node = root;
+    for(const char c : s) {
+        int idx = c-'a';
+        if(!node->children[idx]) return false;
+        node = node->children[idx];
+    }
+
+    return true;
+}
