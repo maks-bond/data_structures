@@ -26,110 +26,109 @@ TEST(TrieTest, RemoveBasicTest) {
 }
 
 TEST(TrieTest, FindBasicTest) {
-    TrieNode *root = new TrieNode();
-    add(root, "abcd");
-
-    EXPECT_TRUE(find(root, "abcd"));
-    EXPECT_TRUE(find(root, "abc"));
-    EXPECT_TRUE(find(root, "ab"));
-    EXPECT_TRUE(find(root, "a"));
-    EXPECT_FALSE(find(root, "bcd"));
+    Trie trie;
+    trie.add("abcd");
+    EXPECT_TRUE(trie.find("abcd"));
+    EXPECT_TRUE(trie.find("abc"));
+    EXPECT_TRUE(trie.find("ab"));
+    EXPECT_TRUE(trie.find("a"));
+    EXPECT_FALSE(trie.find("bcd"));
 }
 
 TEST(TrieTest, RemoveTest) {
-    TrieNode *root = new TrieNode();
-    add(root, "abcd");
-    add(root, "abc");
-    add(root, "ab");
-    add(root, "a");
-    EXPECT_TRUE(find(root, "abcd"));
+    Trie trie;
+    trie.add("abcd");
+    trie.add("abc");
+    trie.add("ab");
+    trie.add("a");
+    EXPECT_TRUE(trie.find("abcd"));
 
-    remove(root, "abcd");
-    EXPECT_FALSE(find(root, "abcd"));
-    EXPECT_TRUE(find(root, "abc"));
+    trie.remove("abcd");
+    EXPECT_FALSE(trie.find("abcd"));
+    EXPECT_TRUE(trie.find("abc"));
 
-    remove(root, "abc");
-    EXPECT_FALSE(find(root, "abc"));
-    EXPECT_TRUE(find(root, "ab"));
+    trie.remove("abc");
+    EXPECT_FALSE(trie.find("abc"));
+    EXPECT_TRUE(trie.find("ab"));
 
-    remove(root, "ab");
-    EXPECT_FALSE(find(root, "ab"));
-    EXPECT_TRUE(find(root, "a"));
+    trie.remove("ab");
+    EXPECT_FALSE(trie.find("ab"));
+    EXPECT_TRUE(trie.find("a"));
 
-    remove(root, "a");
-    EXPECT_FALSE(find(root, "a"));
+    trie.remove("a");
+    EXPECT_FALSE(trie.find("a"));
 }
 
 TEST(TrieTest, RemoveTest2) {
-    TrieNode *root = new TrieNode();
-    add(root, "a");
-    add(root, "abcd");
-    add(root, "ab");
-    add(root, "abc");
+    Trie trie;
+    trie.add("a");
+    trie.add("abcd");
+    trie.add("ab");
+    trie.add("abc");
     
-    EXPECT_TRUE(find(root, "abcd"));
-    EXPECT_TRUE(find(root, "abc"));
-    EXPECT_TRUE(find(root, "ab"));
-    EXPECT_TRUE(find(root, "a"));
+    EXPECT_TRUE(trie.find("abcd"));
+    EXPECT_TRUE(trie.find("abc"));
+    EXPECT_TRUE(trie.find("ab"));
+    EXPECT_TRUE(trie.find("a"));
 
-    remove(root, "a");
-    EXPECT_TRUE(find(root, "abcd"));
-    EXPECT_TRUE(find(root, "abc"));
-    EXPECT_TRUE(find(root, "ab"));
-    EXPECT_TRUE(find(root, "a"));
+    trie.remove("a");
+    EXPECT_TRUE(trie.find("abcd"));
+    EXPECT_TRUE(trie.find("abc"));
+    EXPECT_TRUE(trie.find("ab"));
+    EXPECT_TRUE(trie.find("a"));
 
-    remove(root, "ab");
-    EXPECT_TRUE(find(root, "abcd"));
-    EXPECT_TRUE(find(root, "abc"));
-    EXPECT_TRUE(find(root, "ab"));
-    EXPECT_TRUE(find(root, "a"));
+    trie.remove("ab");
+    EXPECT_TRUE(trie.find("abcd"));
+    EXPECT_TRUE(trie.find("abc"));
+    EXPECT_TRUE(trie.find("ab"));
+    EXPECT_TRUE(trie.find("a"));
 
-    remove(root, "abc");
-    EXPECT_TRUE(find(root, "abcd"));
-    EXPECT_TRUE(find(root, "abc"));
-    EXPECT_TRUE(find(root, "ab"));
-    EXPECT_TRUE(find(root, "a"));
+    trie.remove("abc");
+    EXPECT_TRUE(trie.find("abcd"));
+    EXPECT_TRUE(trie.find("abc"));
+    EXPECT_TRUE(trie.find("ab"));
+    EXPECT_TRUE(trie.find("a"));
 
-    remove(root, "abcd");
-    EXPECT_FALSE(find(root, "a"));
-    EXPECT_FALSE(find(root, "ab"));
-    EXPECT_FALSE(find(root, "abc"));
-    EXPECT_FALSE(find(root, "abcd"));
+    trie.remove("abcd");
+    EXPECT_FALSE(trie.find("a"));
+    EXPECT_FALSE(trie.find("ab"));
+    EXPECT_FALSE(trie.find("abc"));
+    EXPECT_FALSE(trie.find("abcd"));
 }
 
 TEST(TrieTest, RemoveTest3) {
-    TrieNode *root = new TrieNode();
-    add(root, "a");
-    add(root, "abcd");
-    add(root, "ab");
-    add(root, "abc");
+    Trie trie;
+    trie.add("a");
+    trie.add("abcd");
+    trie.add("ab");
+    trie.add("abc");
     
-    EXPECT_TRUE(find(root, "abcd"));
-    EXPECT_TRUE(find(root, "abc"));
-    EXPECT_TRUE(find(root, "ab"));
-    EXPECT_TRUE(find(root, "a"));
+    EXPECT_TRUE(trie.find("abcd"));
+    EXPECT_TRUE(trie.find("abc"));
+    EXPECT_TRUE(trie.find("ab"));
+    EXPECT_TRUE(trie.find("a"));
 
-    remove(root, "a");
-    EXPECT_TRUE(find(root, "abcd"));
-    EXPECT_TRUE(find(root, "abc"));
-    EXPECT_TRUE(find(root, "ab"));
-    EXPECT_TRUE(find(root, "a"));
+    trie.remove("a");
+    EXPECT_TRUE(trie.find("abcd"));
+    EXPECT_TRUE(trie.find("abc"));
+    EXPECT_TRUE(trie.find("ab"));
+    EXPECT_TRUE(trie.find("a"));
 
-    remove(root, "a");
-    EXPECT_TRUE(find(root, "abcd"));
-    EXPECT_TRUE(find(root, "abc"));
-    EXPECT_TRUE(find(root, "ab"));
-    EXPECT_TRUE(find(root, "a"));
+    trie.remove("a");
+    EXPECT_TRUE(trie.find("abcd"));
+    EXPECT_TRUE(trie.find("abc"));
+    EXPECT_TRUE(trie.find("ab"));
+    EXPECT_TRUE(trie.find("a"));
 
-    remove(root, "a");
-    EXPECT_TRUE(find(root, "abcd"));
-    EXPECT_TRUE(find(root, "abc"));
-    EXPECT_TRUE(find(root, "ab"));
-    EXPECT_TRUE(find(root, "a"));
+    trie.remove("a");
+    EXPECT_TRUE(trie.find("abcd"));
+    EXPECT_TRUE(trie.find("abc"));
+    EXPECT_TRUE(trie.find("ab"));
+    EXPECT_TRUE(trie.find("a"));
 
-    remove(root, "a");
-    EXPECT_FALSE(find(root, "a"));
-    EXPECT_FALSE(find(root, "ab"));
-    EXPECT_FALSE(find(root, "abc"));
-    EXPECT_FALSE(find(root, "abcd"));
+    trie.remove("a");
+    EXPECT_FALSE(trie.find("abcd"));
+    EXPECT_FALSE(trie.find("abc"));
+    EXPECT_FALSE(trie.find("ab"));
+    EXPECT_FALSE(trie.find("a"));
 }
