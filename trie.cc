@@ -5,7 +5,6 @@ namespace {
 }
 
 TrieNode::TrieNode() {
-    children = std::vector<TrieNode *>('z'-'a' + 1, nullptr);
 }
 
 void add(TrieNode *root, const std::string &s) {
@@ -20,6 +19,7 @@ void add(TrieNode *root, const std::string &s) {
 }
 
 void remove(TrieNode *root, const std::string &s) {
+    // TODO: Perhaps we should first check whether this string is found and only then remove it.
     TrieNode *node = root;
     for(const char c : s) {
         int idx = c-'a';
@@ -32,7 +32,8 @@ void remove(TrieNode *root, const std::string &s) {
 
         child_node->count--;
         if(child_node->count <= 0) {
-            // Ideally we should also iterate over children of child node and delete all of them to clear the memory.
+            // TODO: We need to clear the memory of child_node.
+            // Perhaps removal should be recursive where we first go down and then remove.
             delete child_node;
             node->children[idx] = nullptr;
             return;

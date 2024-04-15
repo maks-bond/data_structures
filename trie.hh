@@ -6,7 +6,7 @@
 struct TrieNode {
     TrieNode();
 
-    std::vector<TrieNode *> children;
+    TrieNode * children[26] = {nullptr};
     int count = 0;
 };
 

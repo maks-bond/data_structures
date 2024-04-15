@@ -17,3 +17,12 @@ cc_test(
         ":trie",
     ]
 )
+
+cc_test(
+    name = "trie_benchmark",
+    srcs = ["trie_benchmark.cc"],
+    deps = [
+        ":trie",
+        "@benchmark//:benchmark_main",
+    ]
+)
