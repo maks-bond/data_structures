@@ -26,3 +26,18 @@ cc_test(
         "@benchmark//:benchmark_main",
     ]
 )
+
+cc_library(
+    name = "fenwick_tree",
+    hdrs = ["fenwick_tree.hh"],
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "fenwick_tree_test",
+    srcs = ["fenwick_tree_test.cc"],
+    deps = [
+        "@gtest//:gtest_main",
+        ":fenwick_tree",
+    ]
+)
