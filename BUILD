@@ -41,3 +41,12 @@ cc_test(
         ":fenwick_tree",
     ]
 )
+
+cc_test(
+    name = "fenwick_tree_benchmark",
+    srcs = ["fenwick_tree_benchmark.cc"],
+    deps = [
+        ":fenwick_tree",
+        "@benchmark//:benchmark_main",
+    ]
+)

@@ -22,7 +22,6 @@ public:
         idx = idx+1;
 
         T res = 0;
-        std::cout<<"summing"<<std::endl;
         while(idx > 0) {
             res+=bit[idx];
             idx -= idx & (-idx);
