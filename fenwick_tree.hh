@@ -29,11 +29,11 @@ public:
         return res;
     }
 
-    T sum(int l, int r) {
+    T sum(T l, T r) {
         return sum(r) - sum(l-1);
     }
 
-    void add(int idx, int delta) {
+    void add(int idx, T delta) {
         // Move into 1-based system.
         idx = idx+1;
 
