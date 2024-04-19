@@ -1,5 +1,6 @@
 #include <limits>
 #include <vector>
+#include <algorithm>
 
 // This tree implements max operation.
 // Used https://cp-algorithms.com/data_structures/segment_tree.html
@@ -58,3 +59,12 @@ private:
     std::size_t size;
     std::vector<T> t;
 };
+
+// Taken from https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/solutions/1390159/c-python-same-with-longest-increasing-subsequence-problem-clean-concise
+int compress(std::vector<int>& arr) { // For example: arr = [1, 9999, 20, 10, 20]
+    std::vector<int> uniqueSorted(arr);
+    std::sort(uniqueSorted.begin(), uniqueSorted.end());
+    uniqueSorted.erase(std::unique(uniqueSorted.begin(), uniqueSorted.end()), uniqueSorted.end()); // Remove duplicated values
+    for (int& x : arr) x = lower_bound(uniqueSorted.begin(), uniqueSorted.end(), x) - uniqueSorted.begin() + 1;
+    return uniqueSorted.size(); // Result: arr = [1, 4, 3, 2, 3]
+}
