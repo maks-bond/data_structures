@@ -28,6 +28,10 @@ public:
         return lower_bound(1, 0, size-1, l, r, v);
     }
 
+    const std::vector<T> &get_array() const {
+        return t;
+    }
+
 private:
     void build(const std::vector<T> &a, int v, int tl, int tr) {
         if(tl == tr) {
