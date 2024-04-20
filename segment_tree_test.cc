@@ -44,3 +44,31 @@ TEST(SegmentTreeTest, PartialRangeTest2) {
     
     EXPECT_EQ(f.max(1, 3), exp_max);
 }
+
+TEST(SegmentTreeTest, UpperBoundTest) {
+    std::vector<int> a{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    SegmentTree<int> f(a);
+   
+    EXPECT_EQ(f.upper_bound(1, 5, 4), 4);
+}
+
+TEST(SegmentTreeTest, UpperBoundTest2) {
+    std::vector<int> a{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    SegmentTree<int> f(a);
+   
+    EXPECT_EQ(f.lower_bound(3, 5, 2), 3);
+}
+
+TEST(SegmentTreeTest, LowerBoundTest) {
+    std::vector<int> a{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    SegmentTree<int> f(a);
+   
+    EXPECT_EQ(f.lower_bound(1, 5, 4), 3);
+}
+
+TEST(SegmentTreeTest, LowerBoundTest2) {
+    std::vector<int> a{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    SegmentTree<int> f(a);
+   
+    EXPECT_EQ(f.lower_bound(3, 5, 2), 3);
+}

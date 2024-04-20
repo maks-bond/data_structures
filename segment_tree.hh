@@ -20,6 +20,14 @@ public:
         return max(1, 0, size-1, l, r);
     }
 
+    int upper_bound(int l, int r, T v) {
+        return upper_bound(1, 0, size-1, l, r, v);
+    }
+
+    int lower_bound(int l, int r, T v) {
+        return lower_bound(1, 0, size-1, l, r, v);
+    }
+
 private:
     void build(const std::vector<T> &a, int v, int tl, int tr) {
         if(tl == tr) {
@@ -54,6 +62,30 @@ private:
         }
         int tm = (tl+tr)/2;
         return std::max(max(v*2, tl, tm, l, std::min(r, tm)), max(v*2+1, tm+1, tr, std::max(l, tm+1), r));
+    }
+
+    int upper_bound(int v, int tl, int tr, int l, int r, T x) {
+        if(tl > r || tr < l) return -1;
+        if(t[v] <= x) return -1;
+
+        if (tl== tr) return tl;
+
+        int tm = tl + (tr-tl)/2;
+        int left = upper_bound(2*v, tl, tm, l, r, x);
+        if(left != -1) return left;
+        return upper_bound(2*v+1, tm+1, tr, l ,r, x);
+    }
+
+    int lower_bound(int v, int tl, int tr, int l, int r, T x) {
+        if(tl > r || tr < l) return -1;
+        if(t[v] < x) return -1;
+
+        if (tl== tr) return tl;
+
+        int tm = tl + (tr-tl)/2;
+        int left = lower_bound(2*v, tl, tm, l, r, x);
+        if(left != -1) return left;
+        return lower_bound(2*v+1, tm+1, tr, l ,r, x);
     }
 
     std::size_t size;
