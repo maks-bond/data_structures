@@ -12,6 +12,7 @@ public:
 
     // TODO: Improve this constructor with O(n) approach.
     FenwickTree(const std::vector<T> &v) {
+        bit.resize(v.size()+1);
         for(int i = 0; i<v.size(); ++i) {
             add(i, v[i]);
         }
